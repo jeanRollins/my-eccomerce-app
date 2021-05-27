@@ -40,3 +40,13 @@ export const formatNumber =  num  => {
     num = num.split('').reverse().join('').replace(/^[\.]/,'');
     return num ;
 }
+
+export const filterCharacter = ( char, filterBy ) => {
+    
+    const chars = filterBy === "numbers" ? "0123456789 "
+    : "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNLOPQRSTUVWXYZáéíóú" ;
+    
+    const valid = chars.indexOf( char ) ;
+    
+    return ( valid < 0 ) ? '' : char ;  
+}

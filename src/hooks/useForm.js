@@ -7,26 +7,29 @@ export const useForm = ( initialState = {} ) => {
 
     const resetForm = () => {
         setValues( initialState ) ;
-        /*
-        const checks = document.querySelectorAll( ".ssdsas"  ) ;
-
-        checks.forEach( elem => {
-            
-            console.log('elem' , elem.firstElementChild.childNodes[0].value );
-
-            elem.firstElementChild.childNodes[0].checked = false ;
-        });
-        */
     } ;
 
     const handleInputChange = ({ target }) => {
 
+        let { value , dataset } = target ;
+
+        if( dataset.validation === 'number' && !validateNumber( value ) ){
+            value = value.replace( value , '' ) ;
+        }
+
         setValues({
             ...values,
-            [ target.name ]: target.value
+            [ target.name ]: value
         });
 
     }
+
+    const validateNumber = char => {
+        const valuesNumber  = /^[0-9]+$/;
+        return ( char.match( valuesNumber ) )
+    }
+
+    
 
     const handleCheckboxChange = ({ target }) => {
         let { value, name, checked } = target ;

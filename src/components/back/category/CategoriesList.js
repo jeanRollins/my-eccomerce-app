@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { Checkbox, FormControlLabel, Grid } from '@material-ui/core'
 
 export const CategoriesList = ({ categories, handleInputChange }) => {
-    let i = 0;
+    
     const categoriesRef = useRef({}) ;
 
     return (

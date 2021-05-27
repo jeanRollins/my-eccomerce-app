@@ -7,11 +7,13 @@ import { useForm } from '../../../hooks/useForm';
 import { useAlert } from '../../../hooks/useAlert';
 import { ProductAdd } from '../../../libs/Product';
 import { CategoriesList } from '../../../components/back/category/CategoriesList';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { ImageViewSelector } from '../../../components/back/ImageViewSelector';
 
-export const ProductAddScreen = () => {
+export const ProductEditScreen = () => {
+    const { codeProduct } = useParams();
 
+    console.log('codeProduct' , codeProduct);
     const history = useHistory() ;
     const [ categories , setCategories ] = useState( false ) ;
     const [ buttonState , setButtonState ] = useState( false ) ;
@@ -74,7 +76,7 @@ export const ProductAddScreen = () => {
                 handleShowAlert( `${ data.name } agregado` , "success") ;
                 history.replace('/back/product' ) ;
             } else {
-                handleShowAlert( `Error al ingresar producto, itentente más tarde` , "success") ;
+                handleShowAlert( `Error al editar producto, itentente más tarde` , "success") ;
             } 
 
             setButtonState( false ) ;
@@ -89,7 +91,7 @@ export const ProductAddScreen = () => {
             <AlertSnackBar />
             
             <Title
-                text = { "Agregar Producto" }
+                text = { "Editar Producto" }
             />
            
             <Grid

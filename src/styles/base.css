@@ -136,6 +136,19 @@ body .MuiButton-containedPrimary {
     background-color: var(--color-secondary) ;
 }
 
+
+.span-text-input{
+    text-align: center;
+}
+
+.span-text{
+    position: relative;
+    top: -28px;
+    float: left;
+    left: 15px;
+    z-index: 1000000;
+}
+
 /* End   Set Button */
 
 .text-center {

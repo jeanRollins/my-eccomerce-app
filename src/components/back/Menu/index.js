@@ -121,8 +121,6 @@ export const Menu = () => {
             history.replace( url );
         }
         element.classList.add( "active" ) ;
-
-
     }
 
     const MenuResponsive = () => (
