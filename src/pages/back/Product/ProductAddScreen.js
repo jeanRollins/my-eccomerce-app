@@ -22,7 +22,7 @@ export const ProductAddScreen = () => {
 
     const { AlertSnackBar, handleShowAlert } = useAlert() ;
 
-    const [formValues, handleInputChange, resetForm, handleCheckboxChange] = useForm({
+    const [formValues, handleInputChange, , ] = useForm({
         name    : '' ,
         sku     : '' ,
         code    : '' ,
@@ -53,7 +53,7 @@ export const ProductAddScreen = () => {
 
             for await ( const row of dataRefsValues.current ) {
             
-                if( row.value == '' ) {
+                if( row.value === '' ) {
                     row.focus() ;
                     validate = false ;
                     handleShowAlert( row.dataset.message );
@@ -238,8 +238,8 @@ export const ProductAddScreen = () => {
 
                 <Grid container >
                     <CategoriesList
+                        checks = { [] }
                         categories = { categories }
-                        handleInputChange = {handleCheckboxChange}
                     />
                 </Grid>
 
@@ -263,7 +263,7 @@ export const ProductAddScreen = () => {
                 <Grid
                     container
                 >
-                  <ImageViewSelector /> 
+                    <ImageViewSelector />  
 
                 </Grid>
                 <Grid

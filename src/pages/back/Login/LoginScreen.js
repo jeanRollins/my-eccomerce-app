@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Grid } from '@material-ui/core';
 import { IMAGE_LOGO } from '../../../constants/Commons';
 import { useAlert } from '../../../hooks/useAlert';
 import { useForm } from '../../../hooks/useForm';
 import { Auth } from '../../../libs/Login';
 import { AuthContext } from '../../../stateManagement/context/AuthContext';
-import { GetItemJson } from '../../../libs/Storage';
 
 
 

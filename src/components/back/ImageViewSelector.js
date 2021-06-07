@@ -1,33 +1,52 @@
-import React, { useState } from 'react' ;
+import React, { useState } from 'react';
 import { Grid, IconButton } from '@material-ui/core';
 import { AddAPhotoOutlined } from '@material-ui/icons';
 
-export const ImageViewSelector = ({}) => {
+export const ImageViewSelector = () => {
 
-    const [ viewImage , setViewImage ] = useState( [] ) ;
+    const [viewImage, setViewImage] = useState([]);
 
-    const showImage =  e  => {
-        const fileArray = Array.from( e.target.files ).map( file => URL.createObjectURL( file ) ) ;
-        setViewImage( fileArray ) ;
+    const showImage = e => {
+        const fileArray = Array.from(e.target.files).map(file => URL.createObjectURL(file));
+        render(fileArray);
     }
-    
-    return (
-        <>
+
+    const render = fileArray => {
+        setViewImage(
+            fileArray.map(img => (
+                <Grid
+                    item
+                    xs={2}
+                    key={img}
+                    className="pField textAlignCenter p-x-4 "
+                >
+                    <img
+                        src={img}
+                        className="w-100 h-100 border shadow-light"
+                        alt="Imagen para subir"
+                    />
+                </Grid>
+            ))
+        )
+    }
+
+    return <>
             <Grid
                 item
                 xs={2}
-                className=" text-center p-x-4"
+                className="p-top-1 text-center p-x-4"
             >
-                <input
-                    accept="image/*"
-                    className="d-none"
-                    onChange={e => showImage(e)}
-                    name="inputFile"
-                    type="file"
-                    id="icon-button-file"
-                    multiple
-                />
-                <label htmlFor={"icon-button-file"}>
+                <label
+                    htmlFor="icon-button-file"
+                >
+                    <input
+                        type="file"
+                        onChange={showImage}
+                        id="icon-button-file"
+                        name="inputFile"
+                        className="d-none"
+                        multiple
+                    />
                     <IconButton
                         fontSize="large"
                         aria-label="upload picture"
@@ -35,23 +54,10 @@ export const ImageViewSelector = ({}) => {
                     >
                         <AddAPhotoOutlined />
                     </IconButton>
-                    <p  > Agregar Imagen  </p>
+                    <p > Agregar Imagen  </p>
                 </label>
-
             </Grid>
-
-            {
-                viewImage.map( image => (
-                    <Grid
-                        key={image}
-                        item
-                        xs={2}
-                        className="pField textAlignCenter p-x-4 "
-                    >
-                        <img src={image} className="w-100 h-100 border" />
-                    </Grid>
-                ))
-            }
-        </>
-    )
+            { viewImage }
+        </> 
+    
 }

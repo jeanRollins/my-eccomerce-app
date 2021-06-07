@@ -17,13 +17,13 @@ const DateStringFormat = date => {
 }
 const FormatDateTime = ( type , date ) => {
     
-    if( type == "DATE" ){
+    if( type === "DATE" ){
         const dayOfMonth = DateStringFormat( date.getDate() ) ;  
         const month      = DateStringFormat( date.getMonth() ) ;  
         return dayOfMonth + "-" + month + '-' +  date.getFullYear() ;
     }
 
-    if( type == "TIME" ){
+    if( type === "TIME" ){
         const hour      = DateStringFormat( date.getHours() ) ;  
         const minutes   = DateStringFormat( date.getMinutes() ) ;  
         const seconds   = DateStringFormat( date.getSeconds() ) ;  
@@ -37,7 +37,7 @@ export const formatNumber =  num  => {
     num = num + '' ;
     num = num.replace(/\./g,'');
     num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
-    num = num.split('').reverse().join('').replace(/^[\.]/,'');
+    num = num.split('').reverse().join('').replace(/^[]/,'');
     return num ;
 }
 

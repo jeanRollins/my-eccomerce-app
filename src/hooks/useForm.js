@@ -11,7 +11,7 @@ export const useForm = ( initialState = {} ) => {
 
     const handleInputChange = ({ target }) => {
 
-        let { value , dataset } = target ;
+        let { value , dataset, name } = target ;
 
         if( dataset.validation === 'number' && !validateNumber( value ) ){
             value = value.replace( value , '' ) ;
@@ -19,7 +19,7 @@ export const useForm = ( initialState = {} ) => {
 
         setValues({
             ...values,
-            [ target.name ]: value
+            [ name ]: value
         });
 
     }

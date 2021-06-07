@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
 import { Checkbox, FormControlLabel, Grid } from '@material-ui/core'
 
-export const CategoriesList = ({ categories, handleInputChange }) => {
+export const CategoriesList = ({ categories , checks }) => {
     
-    const categoriesRef = useRef({}) ;
+    const categoriesRef = useRef([]) ;
 
     return (
         categories.map( c => (
@@ -20,10 +20,9 @@ export const CategoriesList = ({ categories, handleInputChange }) => {
                         <Checkbox
                             color = "primary"
                             value = { c.id }
-                            className = "ssdsas"
                             name  = "categories[]"
-                            onChange={ handleInputChange }
                             ref = { el => categoriesRef.current[c.id] = el }
+                            defaultChecked = { checks.includes( c.id ) ? true : false }
                         />
                     }
                     label={c.name}
@@ -40,10 +39,9 @@ export const CategoriesList = ({ categories, handleInputChange }) => {
                                     <Checkbox
                                         color="primary"
                                         value={cc.id}
-                                        onChange={ handleInputChange }
-                                        className = "ssdsas"
                                         name  = "categories[]"
                                         ref = { el => categoriesRef.current[cc.id] = el }
+                                        defaultChecked = { checks.includes( cc.id ) ? true : false }
                                     />
                                 }
                                 label={cc.name}
@@ -60,10 +58,9 @@ export const CategoriesList = ({ categories, handleInputChange }) => {
                                             <Checkbox
                                                 color = "primary"
                                                 value = { ccc.id }
-                                                className = "ssdsas"
-                                                onChange={ handleInputChange }
                                                 name  = "categories[]"
                                                 ref = { el => categoriesRef.current[ccc.id] = el }
+                                                defaultChecked = { checks.includes( ccc.id ) ? true : false }
                                             />
                                         }
                                         label={ccc.name}

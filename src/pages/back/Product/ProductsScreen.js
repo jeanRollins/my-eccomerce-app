@@ -45,7 +45,6 @@ export const ProductsScreen = () => {
                 return (
                     <>
                         <Switch
-                            //onChange={handleChange}
                             color="primary"
                             name="checkedB"
                             inputProps={{ 'aria-label': 'primary checkbox' }}
@@ -62,7 +61,7 @@ export const ProductsScreen = () => {
 
     const goToEdit = row => history.replace( `/back/product/edit/${ row.code }` ) ;
 
-    const fetch = async () => {
+    const fetch = () => {
         SetProductsData() ;
     }
 

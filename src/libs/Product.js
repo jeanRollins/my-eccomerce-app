@@ -21,3 +21,9 @@ export const ProductAdd = async form => {
     const { data  } = await HttpPostHeader( url, form, axiosConfig ) ;
     return data ;
 }
+
+export const ProductGet = async code => {
+    const url = `/api/back/product/get/${ code }` ;
+    const { data : { data } } = await HttpGet( url ) ;
+    return data ;
+}

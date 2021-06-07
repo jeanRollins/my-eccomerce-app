@@ -61,7 +61,7 @@ export function Navbar(props) {
 
             <Grid item sm={1} md={2} lg={4} >
               <a
-                href="#"
+                href="/"
                 className="link"
                 onClick={e => exitSession(e)}
               >

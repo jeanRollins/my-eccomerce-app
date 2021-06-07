@@ -140,7 +140,9 @@ export const Menu = () => {
                         className={index === 0 ? 'active' : ''}
                         ref={r => itemsMenu.current[index] = r}
                     >
-                        <a href="#" onClick = { e => selected( e, index, item.type, item.url ) } >
+                        <a 
+                            href = { item.url } 
+                            onClick = { e => selected( e, index, item.type, item.url ) } >
                             <div
                                 className = "menu-icon-item"
                             >
