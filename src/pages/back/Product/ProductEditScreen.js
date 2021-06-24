@@ -48,8 +48,9 @@ export const ProductEditScreen = () => {
     const fetch = async () => {
         setCategories( false ) ;
         const _categories = await CategoryGetAlls();
-        const _product    = await ProductGet(codeProduct);
-        
+        let _product    = await ProductGet(codeProduct);
+        _product.files = _product.files.map( f =>  ({...f, codeProduct} ) ) ;
+
         setCategoriesSelected( _product.categories.map( c => c._id ) ) ;
         setCategoriesList(_product.categories.map(c => c._id));
         setProduct(_product);
@@ -67,8 +68,6 @@ export const ProductEditScreen = () => {
                 <PanelTab 
                     tabs = { tabs }
                 />
-         
-               
 
             </>
         ) : (

@@ -8,6 +8,7 @@ import { ProductsScreen } from '../pages/back/Product/ProductsScreen';
 
 import { ProductAddScreen } from '../pages/back/Product/ProductAddScreen';
 import { ProductEditScreen } from '../pages/back/Product/ProductEditScreen';
+import { CategoryScreen } from '../pages/back/Category/CategoryScreen';
 
 
 
@@ -37,12 +38,12 @@ export const DashboardRoutes = () => {
                             <Route  path = "/back/product/add"  exact = { true }  component = { ProductAddScreen } />
                             <Route  path = "/back/product/edit/:codeProduct"  exact = { true }  children = {<ProductEditScreen/>}  />
 
+                            <Route  path = "/back/category"  exact = { true }  component = { CategoryScreen } />
+
                         </Switch>
                     </Grid>
                 </Grid>
-               
             </div>
-           
         </>
     )
 }

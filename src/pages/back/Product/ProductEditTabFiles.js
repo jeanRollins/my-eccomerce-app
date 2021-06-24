@@ -11,17 +11,17 @@ export const ProductEditTabFiles = ({ files, codeProduct, fetch }) => {
     const form = useRef();
 
     const { AlertSnackBar, handleShowAlert } = useAlert();
+    
 
     const handleAddImages = async e => {
         e.preventDefault();
-
+        
         try {
             let formData = new FormData( form.current ) ;
             formData.append( 'code' , codeProduct ) ;
 
             const { action } = await FileAddAndUpdateProduct( formData ) ;
             
-            console.log('action ::: ' , action );
             action ? await fetch() : handleShowAlert( "Hubo un problema al agregar imagen, intente más tarde." ) ; 
         } 
         catch (error) {
@@ -29,32 +29,25 @@ export const ProductEditTabFiles = ({ files, codeProduct, fetch }) => {
         }
     }
 
-    const handleDelete = async ( idFile, codeProduct , path ) => {
+    const handleDelete = async data => {
+        
+        const { codeProduct, filename, _id } = data ;  
         
         try {
-            /*
-            const form = new FormData() ;
-            form.append( 'path', path ) ;
-            form.append( 'idFile', idFile ) ;
-            form.append( 'codeProduct', codeProduct ) ;
-            */
-            const data = { path, idFile, code : codeProduct } ;
-        
-            console.log('data ::::: ' , data );
+            const data = { path : filename , idFile: _id, code : codeProduct } ;
             const { action } = await FileRemove( data ) ;
             
-            console.log( 'action delete ::::: ' , action ) ;
             action ? await fetch() : handleShowAlert( "Hubo un problema al borrar imagen, intente más tarde." ) ;
         } 
         catch (error) {
             handleShowAlert( "Hubo un problema al borrar imagen, intente más tarde." ) ;     
         }
-        
-
     }
+
+
     return (
         <>  
-            <AlertSnackBar />
+            <AlertSnackBar/>
             <Grid
                 container
                 className="m-top-2"
@@ -130,7 +123,6 @@ export const ProductEditTabFiles = ({ files, codeProduct, fetch }) => {
                 <ImagesSelected
                     files        = { files }
                     handleDelete = { handleDelete }
-                    codeProduct  = { codeProduct }
                 />
             </Grid>
         </>

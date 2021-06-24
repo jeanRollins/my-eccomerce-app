@@ -11,6 +11,8 @@ import { IMAGE_LOGO } from '../../../constants/Commons';
 
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import StorefrontRoundedIcon from '@material-ui/icons/StorefrontRounded';
+import CategoryOutlinedIcon from '@material-ui/icons/CategoryOutlined';
+
 import SettingsApplicationsRoundedIcon from '@material-ui/icons/SettingsApplicationsRounded';
 import { NavLink, useHistory } from 'react-router-dom';
 
@@ -41,6 +43,13 @@ const menuItems = [
         ]
     },
     {
+        name: 'Categorías',
+        url: '/back/category',
+        type: 'link',
+        flag: 'categorias',
+        icon:  'category'
+    },
+    {
         name: 'Configuración',
         type: 'submenus',
         flag: 'services',
@@ -59,7 +68,7 @@ const menuItems = [
     }
 ];
 
-const GetMenuIcon = ({icon}) => {
+const GetMenuIcon = ( { icon } ) => {
 
     switch (icon) {
         case 'home': return  <HomeRoundedIcon /> ; 
@@ -67,6 +76,8 @@ const GetMenuIcon = ({icon}) => {
         case 'product': return  <StorefrontRoundedIcon /> ;
 
         case 'setting': return  <SettingsApplicationsRoundedIcon /> ;
+
+        case 'category': return  <CategoryOutlinedIcon /> ;
 
         default : return <HomeRoundedIcon /> ; 
     }
@@ -166,11 +177,11 @@ export const Menu = () => {
 
                             <ul className="">
 
-                                { item.data.map((subitem, i) => (
-                                    <li key={i}>
+                                { item.data.map( ( subitem, i ) => (
+                                    <li key = { i } >
                                         <NavLink to = { subitem.url } >
 
-                                            <strong> {subitem.name} </strong>
+                                            <strong> { subitem.name } </strong>
                                         </NavLink>
 
                                     </li>
