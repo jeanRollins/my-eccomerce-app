@@ -1,10 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { Checkbox, FormControlLabel, Grid, IconButton } from '@material-ui/core'
+import { Checkbox, FormControlLabel, Grid, IconButton, TextField } from '@material-ui/core'
 import AddOutlinedIcon from '@material-ui/icons/AddOutlined';
 import CheckOutlinedIcon from '@material-ui/icons/CheckOutlined';
 import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
-import { CategoryAdd, CategoryGetByfield } from '../../../libs/Category'
+import { CategoryAdd } from '../../../libs/Category'
 import { useAlert } from '../../../hooks/useAlert';
+import { MyTooltip } from '../Tooltip';
 
 export const CategoriesList = ({ categories, checks, showAdd = false, fetch, showChecks = false }) => {
 
@@ -66,8 +67,23 @@ export const CategoriesList = ({ categories, checks, showAdd = false, fetch, sho
         console.log('id ::: ', id);
     }
 
+    const AddCategories = () => (
+        <div className="w-100 ">
+            <input 
+                className = " input-sm w-100"
+            />
+        </div>
+    )
+
+    const BtnAction = () => (
+        <IconButton>
+            <AddOutlinedIcon fontSize="small" />
+        </IconButton>
+    )
+
     return (
         <>
+          
             <AlertSnackBar />
 
             { categories.map(c => (
@@ -118,14 +134,13 @@ export const CategoriesList = ({ categories, checks, showAdd = false, fetch, sho
                                 </IconButton>
                             </div>
 
-                            <div 
-                                className = "d-inline"
+                            <div
+                                className="d-inline"
                             >
-                                <IconButton
-                                    onClick={e => handleToggleRef(c.id)}
-                                >
-                                    <AddOutlinedIcon fontSize="small" />
-                                </IconButton>
+                                <MyTooltip
+                                    Component = { AddCategories }
+                                    ComponentToAction = { BtnAction }
+                                />
                                 <div
                                     className=" d-none"
                                     ref={el => categoriesRef.current[c.id] = el}
@@ -154,7 +169,7 @@ export const CategoriesList = ({ categories, checks, showAdd = false, fetch, sho
                                     </IconButton>
                                 </div>
                             </div>
-                          
+
                         </>
                     )}
 

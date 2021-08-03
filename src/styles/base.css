@@ -119,6 +119,9 @@ textarea{
 .p-top-2 { padding-top: 20px }
 .p-top-3 { padding-top: 30px }
 
+.p-1 { padding: 7px; }
+.p-2 { padding: 14px; }
+
 
 /* DISPLAY */
 .d-none{
